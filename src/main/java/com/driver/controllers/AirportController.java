@@ -4,7 +4,7 @@ import com.driver.model.Airport;
 import com.driver.model.City;
 import com.driver.model.Flight;
 import com.driver.model.Passenger;
-import com.driver.repository.AirportService;
+import com.driver.service.AirportService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;

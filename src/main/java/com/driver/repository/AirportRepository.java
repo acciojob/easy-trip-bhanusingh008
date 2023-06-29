@@ -1,4 +1,4 @@
-package com.driver.service;
+package com.driver.repository;
 
 import com.driver.model.Airport;
 import com.driver.model.City;
@@ -113,7 +113,11 @@ public class AirportRepository {
 
         flight_booked.get(flightId).add(passenger);
 
-        passengerHashMap.get(passenger).add(flightId);
+        for (Passenger pss : passengerHashMap.keySet()){
+            if(pss.getPassengerId() == passengerId){
+                passengerHashMap.get(pss).add(flightId);
+            }
+        }
 
         return "SUCCESS";
     }

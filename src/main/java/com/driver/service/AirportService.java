@@ -1,10 +1,10 @@
-package com.driver.repository;
+package com.driver.service;
 
 import com.driver.model.Airport;
 import com.driver.model.City;
 import com.driver.model.Flight;
 import com.driver.model.Passenger;
-import com.driver.service.AirportRepository;
+import com.driver.repository.AirportRepository;
 
 import java.util.Date;
 
