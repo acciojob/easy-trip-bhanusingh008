@@ -147,8 +147,16 @@ public class AirportRepository {
 
         List<Passenger> curr = flight_booked.get(flightId);
 
-        if(!curr.contains(passengerbyID.get(passengerId))){
-            return "FAILURE";
+        boolean is_pass = false;
+
+        for(Passenger passenger : curr){
+            if(passenger.getPassengerId() == passengerId){
+                is_pass=true;
+            }
+        }
+
+        if (!is_pass){
+            return "FAILED";
         }
 
         for(Passenger passenger : curr){
