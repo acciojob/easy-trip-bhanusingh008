@@ -96,6 +96,10 @@ public class AirportRepository {
 
     public String bookATicket(Integer flightId, Integer passengerId) {
 
+        if(!flight_booked.containsKey(flightId)){
+            return "FAILURE";
+        }
+
         int curr_cap = flight_booked.get(flightId).size();
         if(curr_cap +1 > flightHashMap.get(flightId).getMaxCapacity()){
             return "FAILURE";
