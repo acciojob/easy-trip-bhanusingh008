@@ -147,7 +147,14 @@ public class AirportRepository {
     }
 
     public int countOfBookingsDoneByPassengerAllCombined(Integer passengerId) {
+
+        if(!passengerbyID.containsKey(passengerId)){
+            return 0;
+        }
+
         Passenger passenger = passengerbyID.get(passengerId);
+
+
         return passengerHashMap.get(passenger).size();
     }
 
