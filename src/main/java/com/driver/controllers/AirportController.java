@@ -109,4 +109,9 @@ public class AirportController {
         //And return a "SUCCESS" message if the passenger has been added successfully.
         return airportService.addPassenger(passenger);
     }
+
+    @GetMapping("/get-number-of-people-with-no-flight")
+    public int getNumberOfPeopleOnWithNoFlight(){
+        return airportService.getNumberOfPeopleOnWithNoFlight();
+    }
 }

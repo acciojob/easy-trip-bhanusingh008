@@ -190,4 +190,17 @@ public class AirportRepository {
 
         return rev;
     }
+
+    public int getNumberOfPeopleOnWithNoFlight() {
+        int cnt = 0;
+
+        for(Passenger passenger : passengerHashMap.keySet()){
+
+            if(passengerHashMap.get(passenger).size()==0){
+                cnt++;
+            }
+        }
+
+        return cnt;
+    }
 }

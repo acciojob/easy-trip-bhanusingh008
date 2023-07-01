@@ -61,4 +61,8 @@ public class AirportService {
     public int calculateRevenueOfAFlight(Integer flightId) {
         return airportRepository.calculateRevenueOfAFlight(flightId);
     }
+
+    public int getNumberOfPeopleOnWithNoFlight() {
+        return airportRepository.getNumberOfPeopleOnWithNoFlight();
+    }
 }
