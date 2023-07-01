@@ -170,14 +170,9 @@ public class AirportRepository {
             return "FAILURE";
         }
 
-        for(Passenger passenger : curr){
-
-            if (passenger.getPassengerId() == passengerId){
-                curr.remove(passenger);
-            }
-        }
-
         Passenger passenger =  passengerbyID.get(passengerId);
+
+        curr.remove(passenger);
 
         passengerHashMap.get(passenger).remove(flightId);
 
