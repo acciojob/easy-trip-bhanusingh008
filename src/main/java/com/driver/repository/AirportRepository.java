@@ -165,7 +165,7 @@ public class AirportRepository {
         }
 
         if (!is_pass){
-            return "FAILED";
+            return "FAILURE";
         }
 
         for(Passenger passenger : curr){
