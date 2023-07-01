@@ -49,19 +49,18 @@ public class AirportRepository {
 
         for(int flight : flightHashMap.keySet()){
 
+            List<Passenger> list = flight_booked .get(flight);
             Flight curr_flight = flightHashMap.get(flight);
 
             City from_city = curr_flight.getFromCity();
             City to_city = curr_flight.getToCity();
 
-            Date curr_date = curr_flight.getFlightDate();
-
-            if(from_city.name().equals(curr_city) && curr_date.before(date)){
-                cnt++;
+            if(from_city.name().equals(curr_city) && date.before(curr_flight.getFlightDate())){
+                cnt+=list.size();
             }
 
-            if(to_city.name().equals(curr_city) && curr_date.after(date)){
-                cnt++;
+            if(to_city.name().equals(curr_city) && date.after(curr_flight.getFlightDate())){
+                cnt+=list.size();
             }
         }
         return cnt;
