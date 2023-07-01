@@ -132,7 +132,9 @@ public class AirportRepository {
     }
 
     public String getAirportNameFromFlightId(Integer flightId) {
-
+        if(!flightHashMap.containsKey(flightId)){
+            return "FAILURE";
+        }
         String flight_city = flightHashMap.get(flightId).getFromCity().name();
 
         for(String id : airportHashMap.keySet()) {
