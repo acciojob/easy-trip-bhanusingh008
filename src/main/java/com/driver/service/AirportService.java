@@ -5,12 +5,14 @@ import com.driver.model.City;
 import com.driver.model.Flight;
 import com.driver.model.Passenger;
 import com.driver.repository.AirportRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
 public class AirportService {
 
-    AirportRepository airportRepository = new AirportRepository();
+    @Autowired
+    AirportRepository airportRepository;
 
     public void addAirport(Airport airport) {
         airportRepository.addAirport(airport);
