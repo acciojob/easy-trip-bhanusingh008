@@ -70,6 +70,7 @@ public class AirportRepository {
 
     public String addFlight(Flight flight) {
         flightHashMap.put(flight.getFlightId(), flight);
+        flight_booked.put(flight.getFlightId(), new ArrayList<>());
         return "SUCCESS";
     }
 
@@ -94,7 +95,7 @@ public class AirportRepository {
         return "SUCCESS";
     }
 
-    public String bookATicket(Integer flightId, Integer passengerId) {
+    public String bookATicket(Integer flightId, Integer passengerId){
 
         if(!flight_booked.containsKey(flightId)){
             return "FAILURE";
@@ -127,7 +128,6 @@ public class AirportRepository {
                 passengerHashMap.get(pss).add(flightId);
             }
         }
-
         return "SUCCESS";
     }
 
