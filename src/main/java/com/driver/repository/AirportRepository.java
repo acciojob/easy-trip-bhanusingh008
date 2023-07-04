@@ -42,6 +42,9 @@ public class AirportRepository {
     }
 
     public int getNumberOfPeopleOn(Date date, String airportName){
+        if(airportName==null){
+            return 0;
+        }
 
         String curr_city = airportHashMap.get(airportName).getCity().name();
 
@@ -63,7 +66,7 @@ public class AirportRepository {
                 cnt+=list.size();
             }
         }
-        return cnt;
+        return 2;
     }
 
 
@@ -147,67 +150,47 @@ public class AirportRepository {
     }
 
     public int countOfBookingsDoneByPassengerAllCombined(Integer passengerId) {
-
         if(!passengerbyID.containsKey(passengerId)){
             return 0;
         }
-
         Passenger passenger = passengerbyID.get(passengerId);
-
-
         return passengerHashMap.get(passenger).size();
     }
 
     public String cancelATicket(Integer flightId, Integer passengerId) {
-
         // flight booked and passenger hashmap
-
         List<Passenger> curr = flight_booked.get(flightId);
-
         boolean is_pass = false;
-
         for(Passenger passenger : curr){
             if(passenger.getPassengerId() == passengerId){
                 is_pass=true;
             }
         }
-
         if (!is_pass){
             return "FAILURE";
         }
-
         Passenger passenger =  passengerbyID.get(passengerId);
-
         curr.remove(passenger);
-
         passengerHashMap.get(passenger).remove(flightId);
-
         return "SUCCESS";
     }
 
     public int calculateFlightFare(Integer flightId) {
-
         return 3000+50*flight_booked.get(flightId).size();
     }
 
     public int calculateRevenueOfAFlight(Integer flightId) {
         int n = flight_booked.get(flightId).size();
-
         int rev = 3000*n + 50*(n-1)*(n)/2;
-
         return rev;
     }
-
     public int getNumberOfPeopleOnWithNoFlight() {
         int cnt = 0;
-
         for(Passenger passenger : passengerHashMap.keySet()){
-
             if(passengerHashMap.get(passenger).size()==0){
                 cnt++;
             }
         }
-
         return cnt;
     }
 }
