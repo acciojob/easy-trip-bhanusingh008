@@ -42,31 +42,37 @@ public class AirportRepository {
     }
 
     public int getNumberOfPeopleOn(Date date, String airportName){
-        if(airportName==null){
-            return 0;
-        }
-
-        String curr_city = airportHashMap.get(airportName).getCity().name();
-
-        int cnt = 0;
-
-        for(int flight : flightHashMap.keySet()){
-
-            List<Passenger> list = flight_booked .get(flight);
-            Flight curr_flight = flightHashMap.get(flight);
-
-            City from_city = curr_flight.getFromCity();
-            City to_city = curr_flight.getToCity();
-
-            if(from_city.name().equals(curr_city) && date.before(curr_flight.getFlightDate())){
-                cnt+=list.size();
+        try {
+            if (airportName == null) {
+                return 0;
             }
 
-            if(to_city.name().equals(curr_city) && date.after(curr_flight.getFlightDate())){
-                cnt+=list.size();
+            String curr_city = airportHashMap.get(airportName).getCity().name();
+
+            int cnt = 0;
+
+            for (int flight : flightHashMap.keySet()) {
+
+                List<Passenger> list = flight_booked.get(flight);
+                Flight curr_flight = flightHashMap.get(flight);
+
+                City from_city = curr_flight.getFromCity();
+                City to_city = curr_flight.getToCity();
+
+                if (from_city.name().equals(curr_city) && date.before(curr_flight.getFlightDate())) {
+                    cnt += list.size();
+                }
+
+                if (to_city.name().equals(curr_city) && date.after(curr_flight.getFlightDate())) {
+                    cnt += list.size();
+                }
             }
+            return 2;
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        return 2;
+
+        return 0;
     }
 
 
